@@ -1,39 +1,62 @@
 \section{Introduction}
 
-
-\section{Overview of Telescope Scheduling}
-Summary of the general requirements for LSST scheduling (autonomous, reconfigurable, responsive to conditions, etc)
-this section should show what the problem was that we were trying to solve
+\begin{itemize}
+\item Overview of the general requirements for the LSST scheduling 'brain'  (autonomous, reconfigurable, responsive to conditions, etc)
+\item What is our general approach for the scheduler algorithms (vs. other approaches) and why was the Markov-Decision style Feature Based Scheduler chosen?
+\item Outline sections in remainder of paper
+\end{itemize} 
 
 \section{Survey Strategy Goals}
-Tag: Lynne
-SRD goals, science goals .. overview and reference other material, but this section should show what we're trying to do for our survey 
+Lynne
 
-\section{LSST Survey Simulator}
-Tag: Tiago
-Environment for testing the scheduler - weather and telescope model. And how they'll be used in operations too. 
+\begin{itemize}
+\item SRD and four primary science themes - how do they drive scheduling?
+\item These primary goals require 80-90\% of the survey time, so what is the starting point for deciding on the rest of the time?
+\item Outline community driven process for determining survey strategy
+\end{itemize}
 
-\section{LSST Scheduler}
-Tag: Peter
-How does the scheduler work? What IS that double rainbow thing in the sky? 
-What is the general idea? 
-\subsection{Surveys and Basis functions}
-What are we balancing in the scheduler for most observations?
-\subsection{Scripted surveys}
-What do we do when it's more specific?
+\section{Feature Based Scheduler}
+Peter
 
-\section{LSST Survey Strategy}
-Tag: Lynne
-How we've configured the scheduler to achieve our goals. How well we think we'll do answering all the astronomy questions.
-\subsection{Process for determining best strategy}
-Metrics and community and SCOC and SAC
-\subsection{Adjusting survey strategy}
-How can we adjust the strategy if it doesn't seem to be working or we change our goals?
+\begin{itemize}
+\item Basic outline of scheduler code - track 'features' and calculate rewards/goals using basis functions, combine basis functions to choose pointing for a `survey'
+\item Combine various surveys, including scripted surveys that allow us to add more rigid requirements
+\item Different kinds of surveys, including greedy / blob / scripted
+\item When do you split between scripted survey and general survey, when between blob and greedy, why do we have surveys for each filter
+\item Within the greedy and blob surveys, what are the basis functions we are currently using? 
+\item How would you modify the scheduler to add more?
+\item How do the scripted surveys work? When do they trigger? How would you add an optimizer?  
+\end{itemize}
 
+\section{Creating Simulated Pointing Histories}
+Peter/Tiago/Lynne
 
-\section{Verification??}
-Does the separate Verification During Commissioning paper exist (or should it?) Should that go here?
+\begin{itemize}
+\item Running the FBS brain within the Operations Simulation environment
+\item What are the telescope model, and weather models? Where do they get their inputs? How does this translate into operations? (reference ptsn-007)
+\end{itemize}
+
+\section{Evaluating the Long-Term Survey Strategy}
+Lynne/Peter
+
+\begin{itemize}
+\item Range of survey strategies studied in the simulations 
+\item Metrics used to evaluate broad science themes 
+\item Metrics used to evaluate all science themes, including options for smaller level optimization of the survey strategy
+\item Refer to report to the SCOC
+\end{itemize}
+
+\section{Evaluating Survey Progress}
+Lynne/Peter
+
+\begin{itemize}
+\item Evaluate survey progress on short term (daily/ weekly), quarterly and twice-yearly timescales
+\item Metrics for evaluating survey progress on short terms and comparing to expected performance
+\item Process for adjusting scheduler to account for short-term variations if needed (when will it be needed?)
+\item Metrics for evaluating survey progress on quarterly/yearly timescales and comparing to expected performance
+\item Process and types of adjustments possible for quarterly/yearly timescales, how does it involve the SCOC?
+\end{itemize}
 
 \section{Conclusions}
 
-
+review and add thoughts on future changes
